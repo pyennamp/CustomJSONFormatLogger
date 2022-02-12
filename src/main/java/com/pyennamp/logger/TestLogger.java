@@ -5,27 +5,27 @@ import java.util.*;
 public class TestLogger {
 
     public static void main(String args[]){
-        JsonLogFormatter LogHandler = new JsonLogFormatter();
+        JsonFormatLog LogHandler = new JsonFormatLog();
 
         Map globalConfig = new HashMap<String,String>();
         globalConfig.put("application","java");
         globalConfig.put("name","TestLogger");
 
-        LogHandler.setGlobalPropertiesForLog(globalConfig);
+        LogHandler.setMDCProperties(globalConfig);
 
-        LogHandler.reLogInfo("step","info","test info method");
+        LogHandler.LogInfo("step","info","test info method");
 
         Map infoPair = new HashMap<String,String>();
         infoPair.put("medthod_type","info");
         infoPair.put("method_name","reLogMapInfo");
-        LogHandler.reLogMapInfo(infoPair,"test info method with key value pair");
+        LogHandler.LogMapInfo(infoPair,"test info method with key value pair");
 
-        LogHandler.reLogError("step","info","test error method");
+        LogHandler.LogError("step","info","test error method");
 
         Map errorPair = new HashMap<String,String>();
         errorPair.put("medthod_type","error");
         errorPair.put("method_name","reLogMapError");
-        LogHandler.reLogMapError(errorPair,"test error method with key value pair");
+        LogHandler.LogMapError(errorPair,"test error method with key value pair");
 
     }
 }
