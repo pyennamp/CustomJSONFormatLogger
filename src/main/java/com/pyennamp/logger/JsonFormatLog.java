@@ -16,15 +16,15 @@ import static net.logstash.logback.marker.Markers.appendRaw;
  * @since 2021-12-05
  */
 
-public class JsonLogFormatter {
-    private static final Logger log= LoggerFactory.getLogger("JsonLogFormatter");
+public class JsonFormatLog {
+    private static final Logger log= LoggerFactory.getLogger("JsonFormatLog");
 
-    public void setGlobalPropertiesForLog(Map Props){
+    public void setMDCProperties(Map Props){
         MDC.clear();
         MDC.setContextMap(Props);
     }
 
-    public void reLogInfo(String KeyField,String ValField,String message){
+    public void LogInfo(String KeyField,String ValField,String message){
         /**
          * pass key,value and a message for logging
          */
@@ -34,7 +34,7 @@ public class JsonLogFormatter {
         log.info(message,appendRaw("instant",instant),value(KeyField,ValField));
     }
 
-    public void reLogMapInfo(Map Props,String message){
+    public void LogMapInfo(Map Props,String message){
         /**
          * pass key,value pairs and a message for logging
          */
@@ -44,7 +44,7 @@ public class JsonLogFormatter {
         log.info(message,appendRaw("instant",instant),appendEntries(Props));
     }
 
-    public void reLogError(String KeyField,String ValField,String message){
+    public void LogError(String KeyField,String ValField,String message){
         /**
          * pass key,value and a message for logging
          */
@@ -54,7 +54,7 @@ public class JsonLogFormatter {
         log.error(message,appendRaw("instant",instant),value(KeyField,ValField));
     }
 
-    public void reLogMapError(Map Props,String message){
+    public void LogMapError(Map Props,String message){
         /**
          * pass key,value pairs and a message for logging
          */
